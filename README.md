@@ -8,14 +8,14 @@ Solve usual issues in development environments:
 - Share quickly your development environment for an experiment with others and be SURE that it works.
 
 Others solutions:
-- Virtual machines:
+- **Virtual machines**:
     - Add a great performance overhead
     - Takes a lot of space: one VM per development environment / experiment.
-- Vagrant (use LXC like docker):
+- **Vagrant** (uses LXC like docker):
   - Takes a lot of space
   - The development environment is not modulable: changing a library version in the VM involves either building a new VM or deal with differents libs as on the baremetal machine.
 
-### Docker (not VMs but containers, thanks to LXC)
+### **Docker** (not VMs but containers, thanks to LXC)
 - Use AUFS to share similarities between different images and save a lot of diskspace
 - It is possible to build a specific library / application version in a container, expose its files to others containers so they can use it.
 - The last point make it the dev environment modular: want another version of the same lib? Change the corresponding container.
