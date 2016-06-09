@@ -26,7 +26,7 @@ Others solutions:
 - [Docker-Engine >=1.10](https://docs.docker.com/engine/installation/)
 - [Docker-Compose >=1.6](https://docs.docker.com/compose/install/)
 
-## Docker images' structure
+## Cafer_docker images' structure
 
 ![Docker compose view](http://gdurl.com/prtp)
 
