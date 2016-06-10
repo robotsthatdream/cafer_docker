@@ -1,21 +1,23 @@
 version: '2'
 services:
   ros_indigo:
-    build: ./ROS_indigo
+    build: ./ROS_INDIGO
     image: ros_indigo:v1
-    volumes:
-      - /opt/ros/indigo
-  
+ 
   cafer:
     build: ./CAFER
     image: cafer:v1
     depends_on: 
       - ros_indigo
-    volumes: 
-      - /usr/local
+
+  dev_tools:
+    build: ./DEV_TOOLS
+    image: dev_tools:v1
+    depends_on:
+      - ros_indigo
 
   ide_data:
-    build: ./IDE_data
+    build: ./IDE_DATA
     image: ide_data:v1
     volumes:
       - /home/${USER}/DockerData/catkin_ws/src:/home/docker_user/catkin_ws/src
@@ -26,13 +28,28 @@ services:
     build: ./IDE
     image: ide:v1
     depends_on:
-      - cafer
+      - dev_tools
       - ide_data
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:z
     volumes_from:
-      - ros_indigo
       - cafer
       - ide_data
     environment:
       - DISPLAY
+
+  terminator:
+    build: ./TERMINATOR
+    image: terminator:v1
+    depends_on:
+      - dev_tools
+      - ide_data
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:z
+    volumes_from:
+      - cafer
+      - ide_data
+    environment:
+      - DISPLAY
+
+  
