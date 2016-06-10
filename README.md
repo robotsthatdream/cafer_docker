@@ -28,7 +28,7 @@ Others solutions:
 
 ## Cafer_docker images' structure
 
-![Docker compose view](http://gdurl.com/prtp)
+![Docker compose view](http://gdurl.com/xuz4)
 
 ## How-to
 
