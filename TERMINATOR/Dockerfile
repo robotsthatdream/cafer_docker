@@ -11,4 +11,4 @@ RUN apt-get update && \
 USER docker_user
 
 #Launching the container will launch Terminator
-CMD terminator
+CMD source /opt/ros/indigo/setup.bash && terminator

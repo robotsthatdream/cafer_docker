@@ -51,5 +51,6 @@ services:
       - ide_data
     environment:
       - DISPLAY
+      - QT_X11_NO_MITSHM=1
 
   
