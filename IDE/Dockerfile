@@ -10,4 +10,4 @@ USER docker_user
 ADD https://download.jetbrains.com/cpp/CLion-2016.1.3.tar.gz /home/docker_user
 
 #Launching the container will launch CLion
-CMD cd /home/docker_user/clion-2016.1.2/bin && ./clion.sh
+#CMD cd /home/docker_user/clion-2016.1.2/bin && ./clion.sh
