@@ -26,6 +26,12 @@ Others solutions:
 - [Docker-Engine >=1.10](https://docs.docker.com/engine/installation/)
 - [Docker-Compose >=1.6](https://docs.docker.com/compose/install/)
 
+### Regarding Docker-Compose
+
+The same project could be achieved without Docker-Compose, as if one look at the [docker-compose.yml file](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml),
+the instructions of the yaml file come from the **docker run** and **docker build** tools. But Docker-Compose makes this task easier.
+Please note that Docker-Compose instructions have precedence over similar instructions put in a Dockerfile.
+
 ## Cafer_docker images' structure
 
 ![Docker compose view](http://gdurl.com/xuz4)
@@ -37,29 +43,32 @@ To launch the development environment, you need:
 - To create the folder structure /home/$USER/DockerData/catkin_ws/src 
   If you want another folder to sync data between your dev environment and the host, edit the corresponding line in the docker-compose.yml file:
 
-> ide_data:
-
->      build: ./IDE_data
->      image: ide_data:v1
->      volumes:
->        - /THE_HOST_PATH_YOU_WANT:/home/docker_user/catkin_ws/src
->        - /home/docker_user/catkin_ws
->      command: chown -R 1000:1000 /home/docker_user/catkin_ws
-
+```YAML
+ide_data:
+  build: ./IDE_data
+  image: ide_data:v1
+  volumes:
+    - /THE_HOST_PATH_YOU_WANT:/home/docker_user/catkin_ws/src
+    - /home/docker_user/catkin_ws
+     command: chown -R 1000:1000 /home/docker_user/catkin_ws
+```
 - To run the environment, just do (from the project root):
 
-> sudo docker-compose up
+```Shell
+ sudo docker-compose up
+ ```
 
-Then you must watch the Docker images being built and then launched in containers.
+Then you will watch the Docker images being built and then launched as containers.
 
 ### Customize the development environment to your liking
+#### Change the tools
 
 - The tools bundled with the Docker image are here for demonstration purpose.
 - For instance not everyone would need CLion as a C++ IDE.
 
 To replace it with a graphical IDE (provided that you need one), just edit the file [IDE/DockerFile](https://github.com/robotsthatdream/cafer_docker/blob/master/IDE/Dockerfile):
 
-```
+```Dockerfile
 FROM ros_indigo:v1
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
@@ -77,6 +86,16 @@ CMD cd /home/docker_user/clion-2016.1.3/bin && ./clion.sh                 > Repl
                                                                           > e.g.: CMD sublime-text 
                                                                           > (don't launch as root: use USER docker_user before, if necessary)
 ```
+
+Then rebuild the image with:
+
+```Shell
+sudo docker-compose build ide
+```
+
+#### Access to host' devices
+If you want to have access to an host device like a camera, just edit the [docker-compose.yml](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml) [following this guide](https://docs.docker.com/compose/compose-file/#devices).
+
 ### OSX and Windows users
 
 Docker run under Windows and OSX thanks to [Docker-Machine](https://docs.docker.com/machine/overview/).
@@ -89,7 +108,7 @@ See: [GNU Octave via Docker](http://blog.ctaggart.com/2016/03/gnu-octave-via-doc
 
 ## TODO
 
-- Enable video hardware acceleration on container (by sharing the GPU as a device, as described [HERE](http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration).
+- Enable video hardware acceleration on container (by sharing the GPU as a device, as described [HERE](http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration)).
 - Detailed explanations for using Docker with OSX / Windows.
 - Instructions on how-to use CAFER in C++ / Python projects as CAFER files exist in /usr/local/cafer on the container.
 
