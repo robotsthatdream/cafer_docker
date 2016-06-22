@@ -73,19 +73,19 @@ To replace it with a graphical IDE (provided that you need one), just edit the f
 FROM ros_indigo:v1
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
-#Lib dependencies for CLion UI                                            > Most IDE with a GUI will need these dependencies
+#Lib dependencies for CLion UI                                            #> Most IDE with a GUI will need these dependencies
 RUN apt-get install -y libgtk2.0-0 libxtst6 
 
-USER docker_user                                                          > Never use sudo: use USER root to switch to superuser
+USER docker_user                                                          #> Never use sudo: use USER root to switch to superuser
 
-#Copy and extract IDE archive's file from context to the container        > Replace these lines by:
-RUN wget -qO- https://download.jetbrains.com/cpp/CLion-2016.1.3.tar.gz \  > RUN + "The set of commands to get and install the IDE"
- | tar --transform 's/^dbt2-0.37.50.3/dbt2/' -xvz                         > e.g.: RUN add-apt-repository ppa:webupd8team/sublime-text-2 
-                                                                          > \&& apt-get update && apt-get install sublime-text
+#Copy and extract IDE archive's file from context to the container        #> Replace these lines by:
+RUN wget -qO- https://download.jetbrains.com/cpp/CLion-2016.1.3.tar.gz \  #> RUN + "The set of commands to get and install the IDE"
+ | tar --transform 's/^dbt2-0.37.50.3/dbt2/' -xvz                         #> e.g.: RUN add-apt-repository ppa:webupd8team/sublime-text-2 
+                                                                          #> \&& apt-get update && apt-get install sublime-text
 #Launching the container will launch CLion
-CMD cd /home/docker_user/clion-2016.1.3/bin && ./clion.sh                 > Replace it by CMD + "the command to launch the IDE"
-                                                                          > e.g.: CMD sublime-text 
-                                                                          > (don't launch as root: use USER docker_user before, if necessary)
+CMD cd /home/docker_user/clion-2016.1.3/bin && ./clion.sh                 #> Replace it by CMD + "the command to launch the IDE"
+                                                                          #> e.g.: CMD sublime-text 
+                                                                          #> (don't launch as root: use USER docker_user before, if necessary)
 ```
 
 Then rebuild the image with:
