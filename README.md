@@ -29,8 +29,9 @@ Others solutions:
 ### Regarding Docker-Compose
 
 The same project could be achieved without Docker-Compose, as if one look at the [docker-compose.yml file](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml),
-the instructions of the yaml file come from the **docker run** and **docker build** tools. But Docker-Compose makes this task easier.
-Please note that Docker-Compose instructions have precedence over similar instructions put in a Dockerfile.
+the instructions of the yaml file come from the *docker run* and *docker build* tools. Docker-Compose just makes this task way easier.
+
+**⚠** Please note that Docker-Compose instructions have precedence over similar instructions put in a Dockerfile.
 
 ## Cafer_docker images' structure
 
