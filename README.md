@@ -55,8 +55,9 @@ Then you must watch the Docker images being built and then launched in container
 ### Customize the development environment to your liking
 
 - The tools bundled with the Docker image are here for demonstration purpose.
-- For instance not everyone would need CLion as a C++ IDE. 
-  To replace it with a graphical IDE (provided that you need one), just edit the file [IDE/DockerFile](https://github.com/robotsthatdream/cafer_docker/blob/master/IDE/Dockerfile)
+- For instance not everyone would need CLion as a C++ IDE.
+
+To replace it with a graphical IDE (provided that you need one), just edit the file [IDE/DockerFile](https://github.com/robotsthatdream/cafer_docker/blob/master/IDE/Dockerfile):
 
 ```
 FROM ros_indigo:v1
@@ -69,7 +70,7 @@ USER docker_user                                                          > Neve
 
 #Copy and extract IDE archive's file from context to the container        > Replace these lines by:
 RUN wget -qO- https://download.jetbrains.com/cpp/CLion-2016.1.3.tar.gz \  > RUN + "The set of commands to get and install the IDE"
- | tar --transform 's/^dbt2-0.37.50.3/dbt2/' -xvz                         > e.g.: add-apt-repository ppa:webupd8team/sublime-text-2 
+ | tar --transform 's/^dbt2-0.37.50.3/dbt2/' -xvz                         > e.g.: RUN add-apt-repository ppa:webupd8team/sublime-text-2 
                                                                           > \&& apt-get update && apt-get install sublime-text
 #Launching the container will launch CLion
 CMD cd /home/docker_user/clion-2016.1.3/bin && ./clion.sh                 > Replace it by CMD + "the command to launch the IDE"
