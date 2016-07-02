@@ -21,7 +21,7 @@ RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | s
 #RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net --recv-key 0xB01FA116
 
 #Install ROS Indigo
-RUN apt-get update && apt-get install -y ros-indigo-desktop
+RUN apt-get update && apt-get install -y ros-indigo-desktop-full
 
 #Init rosdep
 RUN rosdep init

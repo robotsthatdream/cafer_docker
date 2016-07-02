@@ -2,7 +2,7 @@ FROM ros_indigo:v1
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
 #Install apt-add-repository support
-RUN apt-get install -y software-properties-common
+RUN apt-get install -y software-properties-common git vim
 
 #Install GCC 6
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \

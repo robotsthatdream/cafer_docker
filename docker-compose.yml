@@ -41,6 +41,8 @@ services:
   terminator:
     build: ./TERMINATOR
     image: terminator:v1
+    devices:
+      - /dev/bus/usb/:/dev/bus/usb/
     depends_on:
       - dev_tools
       - ide_data
