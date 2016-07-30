@@ -9,6 +9,8 @@ services:
     image: cafer:v1
     depends_on: 
       - ros_indigo
+    volumes:
+      - /opt/ros/indigo/cafer_core
 
   dev_tools:
     build: ./DEV_TOOLS

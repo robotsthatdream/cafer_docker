@@ -1,1 +1,1 @@
-FROM busybox:latest
+FROM ros_indigo:v1
