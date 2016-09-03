@@ -1,14 +1,10 @@
 FROM dev_tools:v1
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
-#Lib dependencies for CLion UI
-RUN apt-get install -y libgtk2.0-0 libxtst6 
+#Lib dependencies for QtCreator
+RUN apt-add-repository ppa:beineri/opt-qt57-trusty && apt-get update && apt-get install -y qt57creator
 
 USER docker_user
 
-#Copy and extract IDE archive's file from context to the container
-RUN wget -qO- https://download.jetbrains.com/cpp/CLion-2016.2.tar.gz \
-    | tar --transform 's/^dbt2-0.37.50.3/dbt2/' -xvz
-
-#Launching the container will launch CLion
-CMD source /opt/ros/indigo/setup.bash && cd /home/docker_user/clion-2016.2/bin && ./clion.sh
+#Launching the container will launch QtCreator
+CMD source /opt/ros/indigo/setup.bash && source /opt/qt57/bin/qt57-env.sh && sh /opt/qt57/bin/qtcreator-wrapper
