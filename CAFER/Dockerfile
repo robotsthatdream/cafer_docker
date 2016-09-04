@@ -1,13 +1,10 @@
-FROM ros_indigo:v1
+FROM dev_tools:v1
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
 WORKDIR catkin_ws/src
 
-#Get git
-RUN apt-get update && apt-get install -y git
-
-#Get Intel TBB library
-RUN apt-get install -y libtbb-dev
+#Get Intel TBB (dependency for CAFER)
+RUN apt-get update && apt-get install -y libtbb-dev
 
 #Retrieving cafer
 RUN git clone https://github.com/robotsthatdream/cafer.git && cd cafer && git checkout release-0.2
