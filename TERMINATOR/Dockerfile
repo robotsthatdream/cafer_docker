@@ -39,5 +39,9 @@ RUN wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbol
     fc-cache -vf ~/.fonts/ && \
     mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
+#Source ROS related files and CAFER package at launch
+RUN printf "\nsource /opt/ros/indigo/setup.zsh" >> .zshrc && \
+    printf "\nsource /home/docker_user/ros_packages/cafer_core/setup.zsh" >> .zshrc
+
 #Launching the container will launch Terminator
-CMD source /opt/ros/indigo/setup.bash && terminator
+CMD terminator

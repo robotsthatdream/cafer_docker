@@ -16,7 +16,7 @@ services:
     depends_on: 
       - dev_tools
     volumes:
-      - /opt/ros/indigo/cafer_core
+      - /home/docker_user/ros_packages/cafer_core
 
   ide_data:
     build: ./IDE_DATA

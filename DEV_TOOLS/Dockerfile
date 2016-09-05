@@ -2,7 +2,8 @@ FROM ros_indigo:v1
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
 #Install apt-add-repository support
-RUN apt-get install -y software-properties-common git vim
+RUN apt-get update && \
+    apt-get install -y software-properties-common git vim
 
 #Install valgrind
 RUN apt-get install -y valgrind
