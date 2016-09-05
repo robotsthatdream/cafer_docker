@@ -22,7 +22,7 @@ services:
     build: ./IDE_DATA
     image: ide_data:v1
     volumes:
-      - /home/${USER}/DockerData/catkin_ws/src:/home/docker_user/catkin_ws/src
+      - ${USERPROFILE}/DockerData/catkin_ws/src:/home/docker_user/catkin_ws/src
       - /home/docker_user/catkin_ws
     command: chown -R 1000:1000 /home/docker_user/catkin_ws
 
@@ -32,29 +32,24 @@ services:
     depends_on:
       - dev_tools
       - ide_data
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:z
     volumes_from:
       - cafer
       - ide_data
     environment:
-      - DISPLAY
+      - DISPLAY=10.0.75.1:0.0
+      - QT_X11_NO_MITSHM=1
 
   terminator:
     build: ./TERMINATOR
     image: terminator:v1
-    devices:
-      - /dev/bus/usb/:/dev/bus/usb/
     depends_on:
       - dev_tools
       - ide_data
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:z
     volumes_from:
       - cafer
       - ide_data
     environment:
-      - DISPLAY
+      - DISPLAY=10.0.75.1:0.0
       - QT_X11_NO_MITSHM=1
 
   
