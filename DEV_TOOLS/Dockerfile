@@ -22,6 +22,5 @@ RUN apt-get install -y gcc-6 g++-6 && \
 #Install Clang 3.8
 RUN apt-get install -y clang-3.8 clang-format-3.8
 
-
-
-
+#Install catkin_tools to replace catkin_make and ease integration with QtCreator
+RUN apt-get install python-catkin-tools
