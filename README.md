@@ -35,7 +35,7 @@ the instructions of the yaml file come from the *docker run* and *docker build* 
 
 ## Cafer_docker images' structure
 
-![Docker compose view](http://gdurl.com/xuz4)
+![Docker compose view](http://gdurl.com/xTta)
 
 ## How-to
 ### Launch demo development environment
