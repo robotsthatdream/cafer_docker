@@ -26,24 +26,17 @@ services:
       - /home/docker_user/catkin_ws
     command: chown -R 1000:1000 /home/docker_user/catkin_ws
 
-  ide:
-    build: ./IDE
-    image: ide:v1
-    depends_on:
-      - dev_tools
-      - ide_data
-    volumes_from:
-      - cafer
-      - ide_data
-    environment:
-      - DISPLAY=10.0.75.1:0.0
-      - QT_X11_NO_MITSHM=1
-
   terminator:
     build: ./TERMINATOR
     image: terminator:v1
     depends_on:
-      - dev_tools
+      - cafer
+      
+  ide:
+    build: ./IDE
+    image: ide:v1
+    depends_on:
+      - terminator
       - ide_data
     volumes_from:
       - cafer
@@ -51,5 +44,8 @@ services:
     environment:
       - DISPLAY=10.0.75.1:0.0
       - QT_X11_NO_MITSHM=1
+    entrypoint: 
+      - /usr/bin/terminator
+   
 
   

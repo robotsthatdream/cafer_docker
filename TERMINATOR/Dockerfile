@@ -42,6 +42,3 @@ RUN wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbol
 #Source ROS related files and CAFER package at launch
 RUN printf "\nsource /opt/ros/indigo/setup.zsh" >> .zshrc && \
     printf "\nsource /home/docker_user/ros_packages/cafer_core/setup.zsh" >> .zshrc
-
-#Launching the container will launch Terminator
-CMD terminator
