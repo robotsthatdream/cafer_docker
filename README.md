@@ -60,7 +60,7 @@ To launch the development environment, you need:
     sudo docker-compose up
     ```
 
-Then you will watch the Docker images being built and then launched as containers.
+Then you will watch the Docker images being built and launched as containers.
 
 ### Access to host' devices
 If you want to have access to an host device like cameras, just edit the [docker-compose.yml](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml) [following this guide](https://docs.docker.com/compose/compose-file/#devices).
