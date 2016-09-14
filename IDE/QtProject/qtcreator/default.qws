@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorSession>
+<!-- Written by QtCreator 4.1.0, 2016-09-14T14:04:32. -->
+<qtcreator>
+ <data>
+  <variable>CascadeSetActive</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>Color</variable>
+  <value type="QString">#666666</value>
+ </data>
+ <data>
+  <variable>EditorSettings</variable>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNAAAAAIAAABmAC8AaABvAG0AZQAvAGQAbwBjAGsAZQByAF8AdQBzAGUAcgAvAGMAYQB0AGsAaQBuAF8AdwBzAC8AcwByAGMALwBjAGEAZgBlAHIALwBzAHIAYwAvAGcAZQB0AGkAZAAuAGMAcABwAAAADAAAAAAYAAAAAQAAACsAAAAAAAAARgAAAC4AAAAAAAAAaAAvAGgAbwBtAGUALwBkAG8AYwBrAGUAcgBfAHUAcwBlAHIALwBjAGEAdABrAGkAbgBfAHcAcwAvAHMAcgBjAC8AYwBhAGYAZQByAC8AQwBNAGEAawBlAEwAaQBzAHQAcwAuAHQAeAB0AAAADAAAAAAYAAAAAQAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAgAAAGgALwBoAG8AbQBlAC8AZABvAGMAawBlAHIAXwB1AHMAZQByAC8AYwBhAHQAawBpAG4AXwB3AHMALwBzAHIAYwAvAGMAYQBmAGUAcgAvAEMATQBhAGsAZQBMAGkAcwB0AHMALgB0AHgAdAAAABwAQwBNAGEAawBlAEwAaQBzAHQAcwAuAHQAeAB0AAAAGENNYWtlUHJvamVjdC5DTWFrZUVkaXRvcgAAAGYALwBoAG8AbQBlAC8AZABvAGMAawBlAHIAXwB1AHMAZQByAC8AYwBhAHQAawBpAG4AXwB3AHMALwBzAHIAYwAvAGMAYQBmAGUAcgAvAHMAcgBjAC8AZwBlAHQAaQBkAC4AYwBwAHAAAAASAGcAZQB0AGkAZAAuAGMAcABwAAAAE0NwcEVkaXRvci5DKytFZGl0b3IAAADBAAAADWN1cnJlbnRlZGl0b3IAAABmAC8AaABvAG0AZQAvAGQAbwBjAGsAZQByAF8AdQBzAGUAcgAvAGMAYQB0AGsAaQBuAF8AdwBzAC8AcwByAGMALwBjAGEAZgBlAHIALwBzAHIAYwAvAGcAZQB0AGkAZAAuAGMAcABwAAAAJgBDAHAAcABFAGQAaQB0AG8AcgAuAEMAKwArAEUAZABpAHQAbwByAAAAGAAAAAEAAAArAAAAAAAAAEYAAAAuAAAAAA==</value>
+ </data>
+ <data>
+  <variable>ProjectDependencies</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>ProjectList</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">/home/docker_user/catkin_ws/src/cafer/CMakeLists.txt</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>StartupProject</variable>
+  <value type="QString">/home/docker_user/catkin_ws/src/cafer/CMakeLists.txt</value>
+ </data>
+ <data>
+  <variable>value-ActiveMode</variable>
+  <value type="QString">Mode.Debug</value>
+ </data>
+ <data>
+  <variable>value-Breakpoints</variable>
+  <valuelist type="QVariantList">
+   <valuemap type="QVariantMap">
+    <value type="QString" key="filename">/home/docker_user/catkin_ws/src/cafer/src/getid.cpp</value>
+    <value type="int" key="linenumber">72</value>
+   </valuemap>
+  </valuelist>
+ </data>
+ <data>
+  <variable>value-DebuggerSeparateWidgetGeometry</variable>
+  <value type="QRect">200x200+0+0</value>
+ </data>
+ <data>
+  <variable>value-DefaultFormats</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>value-IndividualFormats</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>value-ProjectTree.ExpandData</variable>
+  <valuelist type="QVariantList">
+   <valuelist type="QVariantList">
+    <value type="QString">session</value>
+    <value type="QString">session</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/docker_user/catkin_ws/src/cafer/CMakeLists.txt</value>
+    <value type="QString">cafer_core</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/docker_user/catkin_ws/src/cafer/src</value>
+    <value type="QString">src</value>
+   </valuelist>
+  </valuelist>
+ </data>
+ <data>
+  <variable>value-TaskWindow.Categories</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">Task.Category.QmlAnalysis</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>value-TaskWindow.IncludeWarnings</variable>
+  <value type="bool">true</value>
+ </data>
+ <data>
+  <variable>value-Watchers</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>valueKeys</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">ActiveMode</value>
+   <value type="QString">Breakpoints</value>
+   <value type="QString">DebuggerSeparateWidgetGeometry</value>
+   <value type="QString">DefaultFormats</value>
+   <value type="QString">IndividualFormats</value>
+   <value type="QString">ProjectTree.ExpandData</value>
+   <value type="QString">TaskWindow.Categories</value>
+   <value type="QString">TaskWindow.IncludeWarnings</value>
+   <value type="QString">Watchers</value>
+  </valuelist>
+ </data>
+</qtcreator>

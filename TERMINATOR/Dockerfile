@@ -4,7 +4,10 @@ MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 #Install Terminator and dependencies (including gtk2 and python 2.7)
 RUN add-apt-repository ppa:gnome-terminator && \
     apt-get update && \
-    apt-get install -y terminator zsh fontconfig
+    apt-get install -y \
+	fontconfig \
+	terminator \
+	zsh
 
 #Set Z shell as default shell
 RUN chsh docker_user -s /bin/zsh
