@@ -1,116 +1,35 @@
 # cafer_docker
-Cafer ready development environment bundled as docker images.
+Cafer ready development environment bundled as docker images. This branch hosts the Windows version of the project.
 
-## Goal
+More detailed explanations can be found on the master branch.
 
-Solve usual issues in development environments:
-- Managing several versions of a same libraries.
-- Share quickly your development environment for an experiment with others and be SURE that it works.
+## Differences with the Linux version
 
-Others solutions:
-- **Virtual machines**:
-    - Add a great performance overhead
-    - Takes a lot of space: one VM per development environment / experiment.
-- **Vagrant** (uses LXC like docker):
-  - Takes a lot of space
-  - The development environment is not modulable: changing a library version in the VM involves either building a new VM or deal with differents libs as on the baremetal machine.
+- Docker uses the Linux kernel features to make isolated containers. Therefore the Microsoft Windows and Apple macOS versions of Docker run in a very lightweight Linux virtual machine using the OSes' hypervisors. If this is nearly transparent for the user, this solution is slower compared to Docker running on a genuine Linux host and make accessing the host hardware devices, like cameras, tricky.
+- On Linux OSes, the Docker containers can access to the host's X Server display socket at /tmp/.X11-unix/X0 provided they have the right permissions. As Windows and macOS don't have a X display server, one must be installed and listen for TCP connections as this is the only way for containers to connect to the X server on these systems.
 
-### **Docker** (not VMs but containers, thanks to LXC)
-- Use AUFS to share similarities between different images and save a lot of diskspace
-- It is possible to build a specific library / application version in a container, expose its files to others containers so they can use it.
-- The last point make it the dev environment modular: want another version of the same lib? Change the corresponding container.
+## Prerequisites
 
-## Requirements:
+- [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+- [A X display server like Cygwin/X](http://x.cygwin.com/docs/ug/setup-cygwin-x-installing.html)
 
-- Linux OS with kernel >=3.10
-- [Docker-Engine >=1.10](https://docs.docker.com/engine/installation/)
-- [Docker-Compose >=1.6](https://docs.docker.com/compose/install/)
+## How to use
 
-### Regarding Docker-Compose
+- Launch Docker for Windows
+- Launch the X display server in multiwindow mode and make it listen for TCP connections (make sure you authorized it in your system's firewall). For instance, to run Cygwin/X from its installation root:
 
-The same project could be achieved without Docker-Compose, as if one look at the [docker-compose.yml file](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml),
-the instructions of the yaml file come from the *docker run* and *docker build* tools. Docker-Compose just makes this task way easier.
+    ```Powershell
+    bin\run.exe --quote /usr/bin/bash.exe -l -c "/usr/bin/XWin :0 -listen tcp -multiwindow -clipboard -nowgl -ac"
+    ``` 
+    - "listen tcp" allows containers to connect to the X Server using TCP
+    - "clipboard" allows the X Server to use the system clipboard which ease Desktop integration
+    - "nowgl" disables hardware OpenGL support. This is the only way to make application like RViz run at the moment.
+    - "ac" disables acces control: any application relying on the X Server for display can connect to Cygwin/X through TCP
+- Launch the ROS development environment with:
 
-**⚠** Please note that Docker-Compose instructions have precedence over similar instructions put in a Dockerfile.
-
-## Cafer_docker images' structure
-
-![Docker compose view](http://gdurl.com/hMNV)
-
-## How-to
-### Launch demo development environment
-
-To launch the development environment, you need:
-- To create the folder structure /home/$USER/DockerData/catkin_ws/src 
-  If you want another folder to sync data between your dev environment and the host, edit the corresponding line in the docker-compose.yml file:
-
-```YAML
-ide_data:
-  build: ./IDE_data
-  image: ide_data:v1
-  volumes:
-    - /THE_HOST_PATH_YOU_WANT:/home/docker_user/catkin_ws/src
-    - /home/docker_user/catkin_ws
-     command: chown -R 1000:1000 /home/docker_user/catkin_ws
-```
-- To run the environment, just do (from the project root):
-
-```Shell
- sudo docker-compose up
- ```
-
-Then you will watch the Docker images being built and then launched as containers.
-
-### Customize the development environment to your liking
-#### Change the tools
-
-- The tools bundled with the Docker image are here for demonstration purpose.
-- For instance not everyone would need CLion as a C++ IDE.
-
-To replace it with a graphical IDE (provided that you need one), just edit the file [IDE/DockerFile](https://github.com/robotsthatdream/cafer_docker/blob/master/IDE/Dockerfile):
-
-```Dockerfile
-FROM ros_indigo:v1
-MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
-
-#Lib dependencies for CLion UI                                            #> Most IDE with a GUI will need these dependencies
-RUN apt-get install -y libgtk2.0-0 libxtst6 
-
-USER docker_user                                                          #> Never use sudo: use USER root to switch to superuser
-
-#Copy and extract IDE archive's file from context to the container        #> Replace these lines by:
-RUN wget -qO- https://download.jetbrains.com/cpp/CLion-2016.1.3.tar.gz \  #> RUN + "The set of commands to get and install the IDE"
- | tar --transform 's/^dbt2-0.37.50.3/dbt2/' -xvz                         #> e.g.: RUN add-apt-repository ppa:webupd8team/sublime-text-2 
-                                                                          #> \&& apt-get update && apt-get install sublime-text
-#Launching the container will launch CLion
-CMD cd /home/docker_user/clion-2016.1.3/bin && ./clion.sh                 #> Replace it by CMD + "the command to launch the IDE"
-                                                                          #> e.g.: CMD sublime-text 
-                                                                          #> (don't launch as root: use USER docker_user before, if necessary)
-```
-
-Then rebuild the image with:
-
-```Shell
-sudo docker-compose build ide
-```
-
-#### Access to host' devices
-If you want to have access to an host device like a camera, just edit the [docker-compose.yml](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml) [following this guide](https://docs.docker.com/compose/compose-file/#devices).
-
-### OSX and Windows users
-
-Docker run under Windows and OSX thanks to [Docker-Machine](https://docs.docker.com/machine/overview/).
-[Docker-Machine](https://docs.docker.com/machine/overview/) is mostly a lightweight Linux Virtual Machine (consumes ~25Mo of RAM, boot in 5 seconds) so it is still more interesting to use than a classic VM. 
-
-But for applications that use a GUI, it is not possible to share the X11 Unix socket from the host as there is no such thing on OSX / Windows hosts,
- one must use [XQuartz](https://xquartz.macosforge.org/trac) (OSX) /[XMing](http://www.straightrunning.com/XmingNotes/) (Windows)
- 
-See: [GNU Octave via Docker](http://blog.ctaggart.com/2016/03/gnu-octave-via-docker-x11.html).
-
-## TODO
-
-- Enable video hardware acceleration on container (by sharing the GPU as a device, as described [HERE](http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration)).
-- Detailed explanations for using Docker with OSX / Windows.
-- Instructions on how-to use CAFER in C++ / Python projects as CAFER files exist in /usr/local/cafer on the container.
-
+    ```Powershell
+    docker-compose up
+    ```
+    from the cafer_docker folder.
+    
 
