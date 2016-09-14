@@ -46,6 +46,8 @@ services:
       - QT_X11_NO_MITSHM=1
     entrypoint: 
       - /usr/bin/terminator
+    security_opt:
+      - seccomp:unconfined
    
 
   
