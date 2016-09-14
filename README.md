@@ -32,4 +32,11 @@ More detailed explanations can be found on the master branch.
     ```
     from the cafer_docker folder.
     
+## Sidenote for macOS users
+
+For macOS users, the principle is the same as are the differences regarding to the Linux version. But one may use [XQuartz](https://xquartz.macosforge.org/trac) as the X display server instead of Cygwin/X.
+ 
+See: 
+-[Docker for macOS](https://docs.docker.com/engine/installation/mac/)
+-[GNU Octave via Docker](http://blog.ctaggart.com/2016/03/gnu-octave-via-docker-x11.html) as an example
 
