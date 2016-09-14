@@ -15,7 +15,8 @@ Others solutions:
   - Takes a lot of disk space
   - The development environment is not modulable: changing a library version in the VM involves either building a new VM or deal with differents libs as on the baremetal machine.
 
-### **Docker** (not VMs but containers, thanks to LXC)
+### **Docker**
+- It builds containers using isolation features from the Linux kernel. Containers act as virtual machines without the performance overhead.
 - Use AUFS to share similarities between different images and save a lot of diskspace
 - It is possible to build a specific library / application version in a container, expose its files to others containers so they can use it.
 - The last point make it the dev environment modular: want another version of the same lib? Change the corresponding container.
