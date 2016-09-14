@@ -31,3 +31,6 @@ RUN apt-get install -y \
 
 #Install catkin_tools to replace catkin_make and ease integration with QtCreator
 RUN apt-get install -y python-catkin-tools
+
+#Allow ptrace for non child processes: this allows QtCreator (gdb) to debug external applications (ROS nodes started with ROSLaunch for instance).
+RUN sed -i '/kernel.yama.ptrace_scope = 1/c\kernel.yama.ptrace_scope = 0' /etc/sysctl.d/10-ptrace.conf
