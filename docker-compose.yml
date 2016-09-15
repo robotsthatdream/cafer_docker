@@ -1,8 +1,13 @@
 version: '2'
 services:
   ros_indigo:
-    build: ./ROS_INDIGO
+    build: 
+      context: ./ROS_INDIGO
+      args:
+        build_env_gid: ${env_GID}
+        build_env_uid: ${env_UID}
     image: ros_indigo:v1
+   
 
   dev_tools:
     build: ./DEV_TOOLS
@@ -24,7 +29,7 @@ services:
     volumes:
       - /home/${USER}/DockerData/catkin_ws/src:/home/docker_user/catkin_ws/src
       - /home/docker_user/catkin_ws
-    command: chown -R 1000:1000 /home/docker_user/catkin_ws
+    command: chown -R ${env_UID}:${env_GID} /home/docker_user/catkin_ws
 
   terminator:
     build: ./TERMINATOR

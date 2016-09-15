@@ -8,9 +8,11 @@ RUN apt-add-repository ppa:beineri/opt-qt57-trusty && \
     apt-get update && \
     apt-get install -y qt57creator
 
-USER docker_user
-
 COPY QtProject /home/docker_user/.config/QtProject
+
+RUN chown -R docker_user /home/docker_user/.config/QtProject
+
+USER docker_user
 
 RUN shell_config_file=.${SHELL#/bin/}rc && \
     printf "\nsource /opt/qt57/bin/qt57-env.sh" >> $shell_config_file
