@@ -21,18 +21,33 @@ Others solutions:
 - It is possible to build a specific library / application version in a container, expose its files to others containers so they can use it.
 - The last point make it the dev environment modular: want another version of the same lib? Change the corresponding container.
 
-## Requirements:
-
-- Linux OS with kernel >=3.10
-- [Docker-Engine >=1.10](https://docs.docker.com/engine/installation/)
-- [Docker-Compose >=1.6](https://docs.docker.com/compose/install/)
-
 ### Regarding Docker-Compose
 
 The same project could be achieved without Docker-Compose, as if one look at the [docker-compose.yml file](https://github.com/robotsthatdream/cafer_docker/blob/master/docker-compose.yml),
 the instructions of the yaml file come from the *docker run* and *docker build* tools. Docker-Compose just makes this task way easier.
 
 **⚠** Please note that Docker-Compose instructions have precedence over similar instructions put in a Dockerfile.
+
+## Requirements:
+
+- Linux OS with kernel >=3.10
+- [Docker-Engine >=1.10](https://docs.docker.com/engine/installation/)
+- [Docker-Compose >=1.6](https://docs.docker.com/compose/install/)
+
+## Content
+
+- [Ubuntu 14.04](http://gnometerminator.blogspot.fr/p/introduction.html) environment
+- [ROS Indigo](http://wiki.ros.org/indigo)
+- the [CAFER framework release](https://github.com/robotsthatdream/cafer)
+- [g++6](https://gcc.gnu.org/gcc-6/)
+- [clang 3.8](http://llvm.org/releases/3.8.0/tools/clang/docs/ReleaseNotes.html)
+- [QtCreator 4.1](https://blog.qt.io/blog/2016/08/25/qt-creator-4-1-0-released/)
+- the [**catkin_tools**](https://catkin-tools.readthedocs.io/en/latest/) package as a modern replacement for the [catkin_make](http://wiki.ros.org/catkin/commands/catkin_make) command. It eases a lot the development flow with QtCreator.
+- [terminator](http://gnometerminator.blogspot.fr/p/introduction.html) as the terminal emulator with:
+    - the [Z shell](http://zsh.sourceforge.net/)
+    - [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+    - [zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+    - the [powerlevel9k theme](https://github.com/bhilburn/powerlevel9k)
 
 ## Cafer_docker images' structure
 
