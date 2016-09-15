@@ -1,6 +1,9 @@
 FROM ubuntu:14.04
 MAINTAINER Pierre-Henri Le Fur <lefur@edu.ece.fr>
 
+ARG build_env_uid=1000
+ARG build_env_gid=1000
+
 #Use bash as default interpreter
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
@@ -26,14 +29,13 @@ RUN apt-get update && apt-get install -y ros-indigo-desktop-full
 #Init rosdep
 RUN rosdep init
 
-#Add an user that can access the X11 socket, replace uid & gid by the output value of 'id -u $USER' and 'id -g $USER"
-RUN export uid=1000 gid=1000 && \
-    mkdir -p /home/docker_user && \
-    echo "docker_user:x:${uid}:${gid}:docker_user,,,:/home/docker_user:/bin/bash" >> /etc/passwd && \
-    echo "docker_user:x:${uid}:" >> /etc/group && \
+#Add an user that can access the X11 socket, replace build_env_uid & build_env_gid by the output value of 'id -u $USER' and 'id -g $USER"
+RUN mkdir -p /home/docker_user && \
+    echo "docker_user:x:${build_env_uid}:${build_env_gid}:docker_user,,,:/home/docker_user:/bin/bash" >> /etc/passwd && \
+    echo "docker_user:x:${build_env_uid}:" >> /etc/group && \
     echo "docker_user ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/docker_user && \
     chmod 0440 /etc/sudoers.d/docker_user && \
-    chown ${uid}:${gid} -R /home/docker_user
+    chown ${build_env_uid}:${build_env_gid} -R /home/docker_user
 
 USER docker_user
 WORKDIR /home/docker_user
