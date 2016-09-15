@@ -25,6 +25,7 @@ More detailed explanations can be found on the master branch.
     - "clipboard" allows the X Server to use the system clipboard which ease Desktop integration
     - "nowgl" disables hardware OpenGL support. This is the only way to make application like RViz run at the moment.
     - "ac" disables acces control: any application relying on the X Server for display can connect to Cygwin/X through TCP
+- Make sure that the DISPLAY variable's value in the [docker-compose.yml file](https://github.com/robotsthatdream/cafer_docker/blob/windows/docker-compose.yml#L45) matches your host IPv4 on the Docker network interface: ![Docker network interface status](http://gdurl.com/jfIo)
 - Launch the ROS development environment with:
 
     ```Powershell
