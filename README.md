@@ -35,7 +35,8 @@ More detailed explanations can be found on the master branch.
     
 ## Sidenote for macOS users
 
-For macOS users, the principle is the same as are the differences regarding to the Linux version. But one may use [XQuartz](https://xquartz.macosforge.org/trac) as the X display server instead of Cygwin/X.
+For macOS users, the principle is the same as are the differences regarding to the Linux version.
+But one may use [XQuartz](https://xquartz.macosforge.org/trac) as the X display server instead of Cygwin/X.
  
 See: 
 - [Docker for macOS](https://docs.docker.com/engine/installation/mac/)
