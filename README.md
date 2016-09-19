@@ -62,7 +62,7 @@ To launch the development environment, you need:
 - To run the environment, just do (from the project root):
 
     ```Shell
-    sudo env_UID=$(id -u <your_user_name>) env_GID=$(id -g <your_user_name>) docker-compose up
+    sudo env_UID=$(id -u $USER) env_GID=$(id -g $USER) docker-compose up
     ```
 
 Then you will watch the Docker images being built and launched as containers.
